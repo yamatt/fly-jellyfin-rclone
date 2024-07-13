@@ -27,3 +27,6 @@ primary_region = 'lhr'
 [[http_service.checks]]
   path = "/health"
 
+[mount]
+source = "jellyfin-data"
+destination = "/data"
