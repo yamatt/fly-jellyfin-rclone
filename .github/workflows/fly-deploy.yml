@@ -16,6 +16,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Validate config
-        run: flyctl config validate
+        run: flyctl config validate  --app ${{ vars.APP_NAME }}
       - name: Deploy
         run: flyctl deploy --remote-only --app ${{ vars.APP_NAME }}
