@@ -3,7 +3,6 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'fly-jellyfin-fuse'
 primary_region = 'lhr'
 
 [build]
@@ -28,5 +27,5 @@ primary_region = 'lhr'
   path = "/health"
 
 [mount]
-source = "jellyfin-data"
+source = "jellyfin_data"
 destination = "/data"
