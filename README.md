@@ -1,6 +1,6 @@
 # Fly.io Jellyfin with Rclone
 
-Run Jellyfin on Fly.io with rclone to mount remote file systems such as S3, and SFTP
+Run Jellyfin on Fly.io with rclone to mount remote file systems such as AWS S3, Backblaze B2 and SFTP
 
 ## Setup
 
