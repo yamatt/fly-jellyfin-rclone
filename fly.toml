@@ -16,6 +16,9 @@ primary_region = 'lhr'
   min_machines_running = 0
   processes = ['app']
 
+[deploy]
+  strategy = 'immediate'
+
 [[vm]]
   memory = '1gb'
   cpu_kind = 'shared'
