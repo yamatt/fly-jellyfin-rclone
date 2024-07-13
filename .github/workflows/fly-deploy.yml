@@ -9,6 +9,8 @@ jobs:
   deploy:
     name: Deploy app
     runs-on: ubuntu-latest
+    env:
+      FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
     concurrency: deploy-group # optional: ensure only one action runs at a time
     steps:
       - uses: actions/checkout@v4
@@ -17,5 +19,3 @@ jobs:
         run: flyctl config validate
       - name: Deploy
         run: flyctl deploy --remote-only --app ${{ vars.APP_NAME }}
-        env:
-          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
