@@ -6,16 +6,38 @@ on:
     branches:
       - main
 jobs:
-  deploy:
-    name: Deploy app
+  fly-config-validate:
+    name: Validate Fly.io config
     runs-on: ubuntu-latest
-    env:
-      FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-    concurrency: deploy-group # optional: ensure only one action runs at a time
     steps:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Validate config
         run: flyctl config validate  --app ${{ vars.APP_NAME }}
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+  dockerfile-lint:
+    name: Run Hadolint on Dockerfile
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Docker files with Hadolint
+        uses: essentialkaos/hadolint-action@v1
+        with:
+          files: Dockerfile
+          format: tty
+          strict-labels: true
+          failure-threshold: warning
+  deploy:
+    name: Deploy app
+    runs-on: ubuntu-latest
+    needs:
+      - fly-config-validate
+    concurrency: deploy-group # optional: ensure only one action runs at a time
+    steps:
+      - uses: actions/checkout@v4
+      - uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Deploy
         run: flyctl deploy --remote-only --app ${{ vars.APP_NAME }}
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
