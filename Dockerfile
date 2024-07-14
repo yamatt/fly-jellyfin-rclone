@@ -1,7 +1,7 @@
 FROM rust:1.79.0-slim-bullseye as horust
 
 RUN apt-get update --yes && \
-    apt-get install --yes --no-install-recommends git=2.39.2-1.1&& \
+    apt-get install --yes --no-install-recommends git=2.39.2 && \
     git clone https://github.com/FedericoPonzi/Horust.git -o /horust-src
 WORKDIR /horust-src
 RUN git checkout v0.1.7 && \
