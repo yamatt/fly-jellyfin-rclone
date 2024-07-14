@@ -13,6 +13,6 @@ RUN git checkout v0.1.7 && \
 FROM jellyfin/jellyfin:10.9.7
 
 COPY --from=horust /horust-src/horust /horust
-COPY service /services
+COPY ./services /services
 
 ENTRYPOINT ["/horust"]
