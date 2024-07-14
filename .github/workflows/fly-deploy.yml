@@ -34,7 +34,6 @@ jobs:
     needs:
       - fly-config-validate
       - dockerfile-lint
-    concurrency: deploy-group # optional: ensure only one action runs at a time
     steps:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
