@@ -1,1 +1,2 @@
-rclone.config
+services/*.toml
+!services/jellyfin.toml
