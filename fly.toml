@@ -29,6 +29,7 @@ primary_region = 'lhr'
 
 [[http_service.checks]]
   path = "/health"
+  grace_period = "10s"
 
 [mount]
 source = "jellyfin_data"
