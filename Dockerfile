@@ -8,6 +8,4 @@ COPY --from=rclone /opt/bitnami/rclone/bin/rclone /rclone
 COPY --from=horust /sbin/horust /horust
 COPY ./services /services
 
-COPY ./rclone.config /etc/rclone.config
-
 ENTRYPOINT ["/horust", "--services-path", "/services"]
