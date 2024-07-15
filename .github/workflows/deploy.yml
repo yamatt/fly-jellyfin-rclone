@@ -36,13 +36,17 @@ jobs:
       - dockerfile-lint
     steps:
       - uses: actions/checkout@v4
-      - name: Write rclone config secret to file
-        env:
-          RCLONE_CONFIG: ${{secrets.RCLONE_CONFIG}}
-        shell: bash
-        run: |
-          echo "$RCLONE_CONFIG" > rclone.config
       - uses: superfly/flyctl-actions/setup-flyctl@master
+      - uses: dopplerhq/secrets-fetch-action@v1.2.0
+        id: doppler_b2
+        with:
+          doppler-token: ${{ secrets.DOPPLER_TOKEN_B2 }}
+      - run: echo "${{ steps.doppler_b2.outputs.DOPPLER_PROJECT }}" > services/b2.toml
+      - uses: dopplerhq/secrets-fetch-action@v1.2.0
+        id: doppler_ftp
+        with:
+          doppler-token: ${{ secrets.DOPPLER_TOKEN_FTP }}
+      - run: echo "${{ steps.doppler_ftp.outputs.DOPPLER_PROJECT }}" > services/ftp.toml
       - name: Deploy
         run: flyctl deploy --remote-only --app ${{ secrets.APP_NAME }}
         env:
