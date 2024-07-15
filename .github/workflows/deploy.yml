@@ -41,12 +41,14 @@ jobs:
         id: doppler_b2
         with:
           doppler-token: ${{ secrets.DOPPLER_TOKEN_B2 }}
-      - run: echo "${{ steps.doppler_b2.outputs.CONFIG }}" > services/b2.toml
+      - name: Write B2 config to Horust services file
+        run: echo '${{ steps.doppler_b2.outputs.CONFIG }}' > services/b2.toml
       - uses: dopplerhq/secrets-fetch-action@v1.2.0
         id: doppler_ftp
         with:
           doppler-token: ${{ secrets.DOPPLER_TOKEN_FTP }}
-      - run: echo "${{ steps.doppler_ftp.outputs.CONFIG }}" > services/ftp.toml
+      - name: Write FTP config to Horust services file
+        run: echo '${{ steps.doppler_ftp.outputs.CONFIG }}' > services/ftp.toml
       - name: Deploy
         run: flyctl deploy --remote-only --app ${{ secrets.APP_NAME }}
         env:
