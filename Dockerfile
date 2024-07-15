@@ -8,6 +8,6 @@ COPY --from=rclone /opt/bitnami/rclone/bin/rclone /rclone
 COPY --from=horust /sbin/horust /horust
 COPY ./services /services
 
-RUN --mount=type=secret,id=RCLONE_CONFIG cp /run/secrets/RCLONE_CONFIG /etc/rclone.config
+COPY ./rclone.config /etc/rclone.config
 
 ENTRYPOINT ["/horust", "--services-path", "/services"]

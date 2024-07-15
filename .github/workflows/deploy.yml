@@ -36,6 +36,12 @@ jobs:
       - dockerfile-lint
     steps:
       - uses: actions/checkout@v4
+      - name: print secrets
+        env:
+          RCLONE_CONFIG: ${{secrets.RCLONE_CONFIG}}
+        shell: bash
+        run: |
+          echo "$RCLONE_CONFIG" >> /etc/rclone.config
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Deploy
         run: flyctl deploy --remote-only --app ${{ secrets.APP_NAME }}
