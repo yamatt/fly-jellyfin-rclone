@@ -41,7 +41,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Write B2 config to Horust services file
-        run: echo '$HORUST_B2_CONFIG' > services/b2.toml
+        run: echo "$HORUST_B2_CONFIG" > services/b2.toml
       - name: Deploy
         run: flyctl deploy --remote-only --app ${{ secrets.APP_NAME }}
         env:
