@@ -37,6 +37,8 @@ jobs:
     env:
       HORUST_B2_CONFIG: |
         ${{ secrets.HORUST_B2_CONFIG }}
+      HORUST_FTP_CONFIG: |
+        ${{ secrets.HORUST_FTP_CONFIG }}
     steps:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
