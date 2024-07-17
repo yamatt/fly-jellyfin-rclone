@@ -9,7 +9,7 @@ COPY --from=horust /sbin/horust /horust
 COPY ./services /services
 
 RUN apt-get update --yes && \
-    apt-get install --no-install-recommends --no-install-suggests --yes fuse3=3.14.0 && \
+    apt-get install --no-install-recommends --no-install-suggests --yes fuse3=3.14.0-4 && \
     apt-get clean autoclean --yes && \
     apt-get autoremove --yes && \
     rm -rf /var/cache/apt/archives* /var/lib/apt/lists/*
