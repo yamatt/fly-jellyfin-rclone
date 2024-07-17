@@ -8,4 +8,9 @@ COPY --from=rclone /opt/bitnami/rclone/bin/rclone /rclone
 COPY --from=horust /sbin/horust /horust
 COPY ./services /services
 
+RUN apt-get install --no-install-recommends --no-install-suggests --yes fuse3 \
+  && apt-get clean autoclean --yes \
+  && apt-get autoremove --yes \
+  && rm -rf /var/cache/apt/archives* /var/lib/apt/lists/*
+
 ENTRYPOINT ["/horust", "--services-path", "/services"]
