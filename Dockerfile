@@ -12,9 +12,8 @@ RUN apt-get update && apt-get install --no-install-recommends --no-install-sugge
     make && make install  && \
     apt-get clean autoclean --yes && \
     apt-get autoremove --yes && \
-    rm -rf /var/cache/apt/archives* /var/lib/apt/lists/* 
-    wget --progress=dot:giga http://www.rarlab.com/rar/unrarsrc-$UNRAR_VERSION.tar.gz --output-document=unrarsrc.tar.gz
-&& \
+    rm -rf /var/cache/apt/archives* /var/lib/apt/lists/*  && \
+    wget --progress=dot:giga http://www.rarlab.com/rar/unrarsrc-$UNRAR_VERSION.tar.gz --output-document=unrarsrc.tar.gz && \
     tar zxvf unrarsrc.tar.gz
 WORKDIR unrar
 RUN make && make install  && \
