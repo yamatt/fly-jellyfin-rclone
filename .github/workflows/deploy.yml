@@ -39,6 +39,8 @@ jobs:
         ${{ secrets.HORUST_B2_CONFIG }}
       HORUST_FTP_CONFIG: |
         ${{ secrets.HORUST_FTP_CONFIG }}
+      HORUST_UNRARFS_CONFIG: |
+        ${{ secrets.HORUST_UNRARFS_CONFIG }}
     steps:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
@@ -46,6 +48,8 @@ jobs:
         run: echo "$HORUST_B2_CONFIG" > services/b2.toml
       - name: Write FTP config to Horust services file
         run: echo "$HORUST_FTP_CONFIG" > services/ftp.toml
+      - name: Write rar2fs config to Horust services file
+        run: echo "$HORUST_UNRARFS_CONFIG" > services/unrar.toml
       - name: Deploy
         run: flyctl deploy --remote-only --app ${{ secrets.APP_NAME }}
         env:
