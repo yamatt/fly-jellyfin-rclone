@@ -25,7 +25,7 @@ WORKDIR $HOME
 RUN wget --progress=dot:giga https://github.com/hasse69/rar2fs/releases/download/v$RAR2FS_VERSION/rar2fs-$RAR2FS_VERSION.tar.gz  --output-document=rar2fs.tar.gz && \
     tar zxvf rar2fs.tar.gz
 WORKDIR $HOME/rar2fs-$RAR2FS_VERSION
-RUN ./configure --with-unrar=$HOME/unrar --with-unrar-lib=/usr/lib/ && make && sudo make install
+RUN ./configure --with-unrar=$HOME/unrar --with-unrar-lib=/usr/lib/ && make && make install
 
 FROM jellyfin/jellyfin:10.9.7
 
