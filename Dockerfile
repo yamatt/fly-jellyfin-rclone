@@ -1,7 +1,7 @@
 FROM federicoponzi/horust:v0.1.7 as horust
 FROM bitnami/rclone:1.67.0-debian-12-r3 as rclone
 
-FROM ubuntu:noble-20240605 as rar2fs
+FROM debian:bookworm as rar2fs
 
 ARG HOME=/root
 # https://ftp.osuosl.org/pub/blfs/conglomeration/unrarsrc/
@@ -11,7 +11,7 @@ ARG RAR2FS_VERSION=1.29.6
 
 WORKDIR $HOME
 
-RUN apt-get update && apt-get install --no-install-recommends --no-install-suggests --yes  wget=1.21.4-1ubuntu4.1 make=4.3-4.1build2 libfuse-dev=2.9.9-8.1build1 g++=4:13.2.0-7ubuntu1 ca-certificates=20240203 && \
+RUN apt-get update && apt-get install --no-install-recommends --no-install-suggests --yes  wget=1.21.3-1+b2 make=4.3-4.1 libfuse-dev=2.9.9-6+b1 g++=4:12.2.0-3 ca-certificates=20230311 && \
     apt-get clean autoclean --yes && \
     apt-get autoremove --yes && \
     rm -rf /var/cache/apt/archives* /var/lib/apt/lists/*
