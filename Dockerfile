@@ -35,7 +35,7 @@ RUN ./configure --with-unrar=$HOME/unrar --with-unrar-lib=/usr/lib/ && make
 FROM jellyfin/jellyfin:10.9.7
 
 COPY --from=rclone /opt/bitnami/rclone/bin/rclone /rclone
-COPY --from=rar2fs /rar2fs/src/rar2fs /rar2fs
+COPY --from=rar2fs $HOME/rar2fs-$RAR2FS_VERSION/src/rar2fs /rar2fs
 
 COPY --from=horust /sbin/horust /horust
 COPY ./services /services
