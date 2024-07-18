@@ -40,7 +40,7 @@ jobs:
       HORUST_FTP_CONFIG: |
         ${{ secrets.HORUST_FTP_CONFIG }}
       HORUST_UNRARFS_CONFIG: |
-        ${{ secrets.HORUST_UNRARFS_CONFIG }}
+        ${{ secrets.HORUST_UNRAR_CONFIG }}
     steps:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
