@@ -8,21 +8,22 @@ ARG UNRAR_VERSION=7.0.9
 # https://github.com/hasse69/rar2fs/releases
 ARG RAR2FS_VERSION=1.29.7
 
-RUN apt-get update && apt-get install --no-install-recommends --no-install-suggests --yes  wget make libfuse-dev g++ && \
-    wget http://www.rarlab.com/rar/unrarsrc-$UNRAR_VERSION.tar.gz && \
-    tar zxvf unrarsrc-$UNRAR_VERSION.tar.gz && \
-    cd unrar && \
-    make && sudo make install  && \
-    make lib && sudo make install-lib  && \
-    cd ..  && \
-    wget https://github.com/hasse69/rar2fs/releases/download/v$RAR2FS_VERSION/rar2fs-$RAR2FS_VERSION.tar.gz  && \
-    tar zxvf rar2fs-$RAR2FS_VERSION.tar.gz  && \
-    cd rar2fs-$RAR2FS_VERSION  && \
-    ./configure --with-unrar=../unrar --with-unrar-lib=/usr/lib/  && \
-    make && sudo make install  && \
+RUN apt-get update && apt-get install --no-install-recommends --no-install-suggests --yes  wget=1.21.4-1ubuntu4.1 make=4.3-4.1build2 libfuse-dev=2.9.9-8.1build1 g++=4:13.2.0-7ubuntu1 && \
+    make && make install  && \
     apt-get clean autoclean --yes && \
     apt-get autoremove --yes && \
     rm -rf /var/cache/apt/archives* /var/lib/apt/lists/* 
+    wget --progress=dot:giga http://www.rarlab.com/rar/unrarsrc-$UNRAR_VERSION.tar.gz --output-document=unrarsrc.tar.gz
+&& \
+    tar zxvf unrarsrc.tar.gz
+WORKDIR unrar
+RUN make && make install  && \
+    make lib && make install-lib
+WORKDIR ..
+RUN wget --progress=dot:giga https://github.com/hasse69/rar2fs/releases/download/v$RAR2FS_VERSION/rar2fs-$RAR2FS_VERSION.tar.gz  --output-document=rar2fs.tar.gz && \
+    tar zxvf rar2fs.tar.gz
+RUN rar2fs-$RAR2FS_VERSION  && \
+    ./configure --with-unrar=../unrar --with-unrar-lib=/usr/lib/
 
 FROM jellyfin/jellyfin:10.9.7
 
