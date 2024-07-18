@@ -4,7 +4,7 @@ name: Deploy
 on:
   push:
     branches:
-      - main
+      - deployed
 jobs:
   fly-config-validate:
     name: Validate Fly.io config
