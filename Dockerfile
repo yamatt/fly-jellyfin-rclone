@@ -12,14 +12,13 @@ ARG RAR2FS_VERSION=1.29.7
 WORKDIR $HOME
 
 RUN apt-get update && apt-get install --no-install-recommends --no-install-suggests --yes  wget=1.21.4-1ubuntu4.1 make=4.3-4.1build2 libfuse-dev=2.9.9-8.1build1 g++=4:13.2.0-7ubuntu1 && \
-    make && make install  && \
     apt-get clean autoclean --yes && \
     apt-get autoremove --yes && \
     rm -rf /var/cache/apt/archives* /var/lib/apt/lists/*  && \
     wget --progress=dot:giga http://www.rarlab.com/rar/unrarsrc-$UNRAR_VERSION.tar.gz --output-document=unrarsrc.tar.gz && \
     tar zxvf unrarsrc.tar.gz
 WORKDIR $HOME/unrar
-RUN make && make install  && \
+RUN make && make install && \
     make lib && make install-lib
 WORKDIR $HOME
 RUN wget --progress=dot:giga https://github.com/hasse69/rar2fs/releases/download/v$RAR2FS_VERSION/rar2fs-$RAR2FS_VERSION.tar.gz  --output-document=rar2fs.tar.gz && \
