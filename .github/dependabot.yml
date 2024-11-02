@@ -11,7 +11,7 @@ updates:
       interval: "weekly"
   - package-ecosystem: "docker" # See documentation for possible values
     directory: "/" # Location of package manifests
-    target-branch: "deploy"
+    target-branch: "deployed"
     schedule:
       interval: "weekly"
   - package-ecosystem: "github-actions" # See documentation for possible values
