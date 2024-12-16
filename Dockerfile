@@ -1,5 +1,5 @@
 FROM federicoponzi/horust:v0.1.7 as horust
-FROM bitnami/rclone:1.67.0-debian-12-r3 as rclone
+FROM bitnami/rclone:1.68.1-debian-12-r3 as rclone
 
 FROM debian:bookworm as rar2fs
 
