@@ -33,7 +33,7 @@ WORKDIR $HOME/rar2fs-$RAR2FS_VERSION
 RUN ./configure --with-unrar=$HOME/unrar --with-unrar-lib=/usr/lib/ && make && \
     cp src/rar2fs /rar2fs
 
-FROM jellyfin/jellyfin:10.10.3
+FROM jellyfin/jellyfin:10.10.5
 
 COPY --from=rclone /opt/bitnami/rclone/bin/rclone /rclone
 COPY --from=rar2fs /rar2fs /rar2fs
