@@ -1,13 +1,13 @@
 FROM federicoponzi/horust:v0.1.7 as horust
-FROM bitnami/rclone:1.68.1-debian-12-r3 as rclone
+FROM bitnami/rclone:1.69.0-debian-12-r2 as rclone
 
 FROM debian:bookworm as rar2fs
 
 ARG HOME=/root
 # https://ftp.osuosl.org/pub/blfs/conglomeration/unrarsrc/
-ARG UNRAR_VERSION=6.2.10
+ARG UNRAR_VERSION=7.1.3
 # https://github.com/hasse69/rar2fs/releases
-ARG RAR2FS_VERSION=1.29.6
+ARG RAR2FS_VERSION=1.29.7
 
 WORKDIR $HOME
 
@@ -33,7 +33,7 @@ WORKDIR $HOME/rar2fs-$RAR2FS_VERSION
 RUN ./configure --with-unrar=$HOME/unrar --with-unrar-lib=/usr/lib/ && make && \
     cp src/rar2fs /rar2fs
 
-FROM jellyfin/jellyfin:10.10.3
+FROM jellyfin/jellyfin:10.10.5
 
 COPY --from=rclone /opt/bitnami/rclone/bin/rclone /rclone
 COPY --from=rar2fs /rar2fs /rar2fs
