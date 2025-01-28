@@ -7,7 +7,7 @@ ARG HOME=/root
 # https://ftp.osuosl.org/pub/blfs/conglomeration/unrarsrc/
 ARG UNRAR_VERSION=7.1.3
 # https://github.com/hasse69/rar2fs/releases
-ARG RAR2FS_VERSION=1.29.7
+ARG RAR2FS_VERSION=1.29.6
 
 WORKDIR $HOME
 
