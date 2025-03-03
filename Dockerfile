@@ -1,4 +1,4 @@
-FROM federicoponzi/horust:v0.1.7 as horust
+FROM federicoponzi/horust:v0.1.9 as horust
 FROM bitnami/rclone:1.69.0-debian-12-r2 as rclone
 
 FROM debian:bookworm as rar2fs
