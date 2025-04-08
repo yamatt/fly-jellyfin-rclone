@@ -11,7 +11,7 @@ ARG RAR2FS_VERSION=1.29.6
 
 WORKDIR $HOME
 
-ADD ./apt/rar2fs.list $HOME/rar2fs.list
+COPY ./apt/rar2fs.list $HOME/rar2fs.list
 
 RUN apt-get update && \
     apt-get install --no-install-recommends --no-install-suggests --yes  apt-get install $(cat $HOME/rar2fs.list)
