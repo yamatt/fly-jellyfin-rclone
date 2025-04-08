@@ -11,10 +11,10 @@ ARG RAR2FS_VERSION=1.29.6
 
 WORKDIR $HOME
 
-RUN apt-get update && apt-get install --no-install-recommends --no-install-suggests --yes  wget=1.21.3-1+b2 make=4.3-4.1 libfuse-dev=2.9.9-6+b1 g++=4:12.2.0-3 ca-certificates=20230311 && \
-    apt-get clean autoclean --yes && \
-    apt-get autoremove --yes && \
-    rm -rf /var/cache/apt/archives* /var/lib/apt/lists/*
+ADD ./apt/rar2fs.list $HOME/rar2fs.list
+
+RUN apt-get update && \
+    apt-get install --no-install-recommends --no-install-suggests --yes  apt-get install $(cat $HOME/rar2fs.list)
 
 RUN wget --progress=dot:giga https://www.rarlab.com/rar/unrarsrc-$UNRAR_VERSION.tar.gz --output-document=unrarsrc.tar.gz && \
     tar zxvf unrarsrc.tar.gz
