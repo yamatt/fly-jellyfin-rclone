@@ -23,9 +23,9 @@ primary_region = 'lhr'
   strategy = 'immediate'
 
 [[vm]]
-  memory = '1gb'
+  memory = '2gb'
   cpu_kind = 'shared'
-  cpus = 2
+  cpus = 4
 
 [[http_service.checks]]
   path = "/health"
