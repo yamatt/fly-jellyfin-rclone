@@ -1,4 +1,9 @@
-command = "mkdir /mnt/torrentfs/ && torrentfs -mountDir=/mnt/torrentfs/ -metainfoDir=/data/torrentfs-meta"
+command = """\
+bash -c ' \
+mkdir -p /mnt/torrentfs && \
+/torrentfs -mountDir=/mnt/torrentfs/ -metainfoDir=/data/torrentfs-meta
+'\
+"""
 
 [restart]
 strategy = "never"
