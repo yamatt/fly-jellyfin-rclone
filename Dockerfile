@@ -1,6 +1,10 @@
 FROM federicoponzi/horust:v0.1.9 as horust
 FROM bitnami/rclone:1.69.2-debian-12-r2 as rclone
 
+FROM golang:1.24.4-alpine3.22 as torrentfs
+
+RUN go install github.com/anacrolix/torrent/fs/...@v1.58.1
+
 FROM debian:bookworm as rar2fs
 
 ARG HOME=/root
@@ -34,6 +38,8 @@ RUN ./configure --with-unrar=$HOME/unrar --with-unrar-lib=/usr/lib/ && make && \
     cp src/rar2fs /rar2fs
 
 FROM jellyfin/jellyfin:10.10.7
+
+COPY --from=torrentfs /go/bin/torrentfs /torrentfs
 
 COPY --from=rclone /opt/bitnami/rclone/bin/rclone /rclone
 COPY --from=rar2fs /rar2fs /rar2fs

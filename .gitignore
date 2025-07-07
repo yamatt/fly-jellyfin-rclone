@@ -1,2 +1,3 @@
 services/*.toml
 !services/jellyfin.toml
+!services/torrentfs.toml
