@@ -1,4 +1,4 @@
-command = "torrentfs -mountDir=/mnt/torrentfs/ -metainfoDir=/mnt/torrentfs-meta"
+command = "torrentfs -mountDir=/mnt/torrentfs/ -metainfoDir=/data/torrentfs-meta"
 
 [restart]
 strategy = "never"
