@@ -1,7 +1,7 @@
 FROM federicoponzi/horust:v0.1.9 as horust
 FROM bitnami/rclone:1.69.2-debian-12-r2 as rclone
 
-FROM golang:1.24.4-alpine3.22 as torrentfs
+FROM golang:1.24.5-alpine3.22 as torrentfs
 
 RUN go install github.com/anacrolix/torrent/fs/...@v1.58.1
 
