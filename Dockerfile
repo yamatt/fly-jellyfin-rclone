@@ -1,5 +1,5 @@
 FROM federicoponzi/horust:v0.1.9 as horust
-FROM bitnami/rclone:1.69.1-debian-12-r3 as rclone
+FROM bitnami/rclone:1.69.3-debian-12-r3 as rclone
 
 FROM jellyfin/jellyfin:10.10.7
 
