@@ -10,7 +10,7 @@ jobs:
     name: Validate Fly.io config
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Validate config
         run: flyctl config validate  --app ${{ secrets.APP_NAME }}
@@ -20,7 +20,7 @@ jobs:
     name: Run Hadolint on Dockerfile
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Check Docker files with Hadolint
         uses: essentialkaos/hadolint-action@v1
         with:
