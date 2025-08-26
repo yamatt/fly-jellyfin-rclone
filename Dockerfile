@@ -1,5 +1,5 @@
 FROM federicoponzi/horust:v0.1.9 as horust
-FROM bitnami/rclone:1.70.2-debian-12-r2 as rclone
+FROM bitnami/rclone:1.70.3-debian-12-r2 as rclone
 
 FROM golang:1.25.0-alpine3.22 as torrentfs
 
