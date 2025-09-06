@@ -35,11 +35,11 @@ RUN ./configure --with-unrar=$HOME/unrar --with-unrar-lib=/usr/lib/ && make && \
 
 FROM jellyfin/jellyfin:10.10.7
 
-COPY --from=rclone /opt/bitnami/rclone/bin/rclone /rclone
-COPY --from=rar2fs /rar2fs /rar2fs
+COPY --from=rclone /opt/bitnami/rclone/bin/rclone /opt/rclone
+COPY --from=rar2fs /rar2fs /opt/rar2fs
 
-COPY --from=horust /sbin/horust /horust
-COPY ./services /services
+COPY --from=horust /sbin/horust /opt/horust
+COPY ./services /etc/services
 
 RUN apt-get update --yes && \
     apt-get install --no-install-recommends --no-install-suggests --yes fuse3=3.14.0-4 libfuse2=2.9.9-6+b1 && \
@@ -49,4 +49,4 @@ RUN apt-get update --yes && \
 
 COPY ./scripts /opt/scripts
 
-ENTRYPOINT ["/horust", "--services-path", "/services"]
+ENTRYPOINT ["/opt/horust", "--services-path", "/etc/services"]
