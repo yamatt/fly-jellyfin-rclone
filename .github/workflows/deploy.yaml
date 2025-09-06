@@ -40,8 +40,6 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - name: Write rar2fs config to Horust services file
-        run: echo "$HORUST_UNRARFS_CONFIG" > services/unrar.toml
       - name: Deploy
         run: flyctl deploy --remote-only --app ${{ secrets.APP_NAME }}
         env:
