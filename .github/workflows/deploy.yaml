@@ -27,7 +27,7 @@ jobs:
           files: Dockerfile
           format: tty
           strict-labels: true
-          failure-threshold: warning
+          failure-threshold: error
   deploy:
     name: Deploy app on Fly.io
     runs-on: ubuntu-latest
