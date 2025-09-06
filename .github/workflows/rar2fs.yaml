@@ -1,0 +1,29 @@
+name: Build and Push
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/rar2fs.yaml"
+      - "src/rar2fs/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./src/rar2fs
+          outputs: type=local,dest=./output
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - name: Upload rar2fs binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: rar2fs-binary-${{ runner.os }}-${{ github.sha }}
+          path: ./output/rar2fs
