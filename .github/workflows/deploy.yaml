@@ -5,6 +5,12 @@ on:
   push:
     branches:
       - main
+    paths:
+      - ".github/workflows/deploy.yaml"
+      - "Dockerfile"
+      - "fly.toml"
+      - "src/scripts/**"
+      - "src/services/**"
 jobs:
   fly-config-validate:
     name: Validate Fly.io config
