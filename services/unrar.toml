@@ -1,0 +1,8 @@
+name = "unrar"
+command = "/opt/scripts/unrar.sh"
+start-after = ["rclone-ftp-auto-mount"]
+
+[restart]
+strategy = "never"
+backoff = "0s"
+attempts = 0

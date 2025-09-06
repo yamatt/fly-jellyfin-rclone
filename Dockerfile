@@ -14,4 +14,6 @@ RUN apt-get update --yes && \
     apt-get autoremove --yes && \
     rm -rf /var/cache/apt/archives* /var/lib/apt/lists/*
 
+COPY ./scripts/ /opt/scripts/
+
 ENTRYPOINT ["/horust", "--services-path", "/services"]

@@ -1,0 +1,10 @@
+name = "rclone-ftp-auto-mount"
+command = "/opt/scripts/rclone-mount.sh ftp / /mnt/ftp --ftp-no-check-certificate --ftp-tls=false --ftp-explicit-tls=true"
+
+[restart]
+strategy = "never"
+backoff = "0s"
+attempts = 0
+
+[environment]
+keep-env = true
