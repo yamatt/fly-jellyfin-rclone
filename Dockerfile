@@ -1,4 +1,4 @@
-FROM federicoponzi/horust:v0.1.9 as horust
+FROM federicoponzi/horust:0.1.10 as horust
 FROM bitnami/rclone:1.70.3-debian-12-r2 as rclone
 
 FROM jellyfin/jellyfin:10.10.7
