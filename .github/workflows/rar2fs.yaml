@@ -23,7 +23,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
       - name: Upload rar2fs binary
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: rar2fs-binary-${{ runner.os }}-${{ github.sha }}
           path: ./output/rar2fs
