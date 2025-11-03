@@ -1,7 +1,7 @@
 FROM federicoponzi/horust:0.1.10 as horust
 FROM bitnami/rclone:1.70.3-debian-12-r2 as rclone
 
-FROM jellyfin/jellyfin:10.11.1
+FROM jellyfin/jellyfin:10.11.2
 
 COPY --from=rclone /opt/bitnami/rclone/bin/rclone /opt/rclone
 COPY ./files/rar2fs /opt/rar2fs
