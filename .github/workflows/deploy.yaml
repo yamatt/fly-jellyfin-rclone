@@ -16,7 +16,7 @@ jobs:
     name: Validate Fly.io config
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Validate config
         run: flyctl config validate  --app ${{ secrets.APP_NAME }}
@@ -26,7 +26,7 @@ jobs:
     name: Run Hadolint on Dockerfile
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Check Docker files with Hadolint
         uses: essentialkaos/hadolint-action@v1
         with:
@@ -44,7 +44,7 @@ jobs:
       HORUST_UNRARFS_CONFIG: |
         ${{ secrets.HORUST_UNRAR_CONFIG }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Deploy
         run: flyctl deploy --remote-only --app ${{ secrets.APP_NAME }}
