@@ -9,8 +9,10 @@ COPY ./files/rar2fs /opt/rar2fs
 COPY --from=horust /sbin/horust /opt/horust
 COPY ./src/services /etc/horust/services
 
+COPY src/pkglist /tmp/pkglist
+
 RUN apt-get update --yes && \
-    apt-get install --no-install-recommends --no-install-suggests --yes fuse3=3.14.0-4 libfuse2=2.9.9-6+b1 && \
+    apt-get install --no-install-recommends --no-install-suggests --yes $(cat /tmp/pkglist) && \
     apt-get clean autoclean --yes && \
     apt-get autoremove --yes && \
     rm -rf /var/cache/apt/archives* /var/lib/apt/lists/*
