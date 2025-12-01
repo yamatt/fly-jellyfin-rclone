@@ -1,7 +1,7 @@
 FROM federicoponzi/horust:0.1.10 as horust
 FROM rclone/rclone:1.72.0 as rclone
 
-FROM jellyfin/jellyfin:10.11.3
+FROM jellyfin/jellyfin:10.11.4
 
 COPY --from=rclone /usr/local/bin/rclone /opt/rclone
 COPY ./files/rar2fs /opt/rar2fs
