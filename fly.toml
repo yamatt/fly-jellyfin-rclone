@@ -30,9 +30,8 @@ cpus = 4
 
 [[http_service.checks]]
 path = "/health"
-grace_period = "10s"
 interval = "5s"
-timeout = "90s"
+timeout = "1m"
 
 [mount]
 source = "jellyfin_data"
