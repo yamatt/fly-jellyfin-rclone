@@ -19,7 +19,6 @@ processes = ['app']
 JELLYFIN_DATA_DIR = "/data/data"
 JELLYFIN_CONFIG_DIR = "/data/config"
 JELLYFIN_CACHE_DIR = "/data/cache"
-JELLYFIN_LOG_DIR = "/dev/stdout"
 
 
 [deploy]
