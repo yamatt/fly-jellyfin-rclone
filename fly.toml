@@ -30,6 +30,8 @@ cpu_kind = 'shared'
 cpus = 4
 
 [[http_service.checks]]
+method = "get"
+path = "/"
 grace_period = "10s"
 interval = "5s"
 timeout = "90s"
