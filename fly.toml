@@ -16,9 +16,11 @@ min_machines_running = 0
 processes = ['app']
 
 [env]
-JELLYFIN_CONFIG_DIR = "/data/configuration"
-JELLYFIN_DATA_DIR = "/data/config"
+JELLYFIN_DATA_DIR = "/data/data"
+JELLYFIN_CONFIG_DIR = "/data/config"
 JELLYFIN_CACHE_DIR = "/data/cache"
+JELLYFIN_LOG_DIR = "/dev/stdout"
+
 
 [deploy]
 strategy = 'immediate'
@@ -29,10 +31,9 @@ cpu_kind = 'shared'
 cpus = 4
 
 [[http_service.checks]]
-path = "/health"
-grace_period = "5m"
-interval = "30s"
-timeout = "2m"
+grace_period = "10s"
+interval = "5s"
+timeout = "90s"
 
 [mount]
 source = "jellyfin_data"
