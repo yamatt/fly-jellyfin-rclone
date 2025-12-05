@@ -11,6 +11,7 @@ on:
       - "fly.toml"
       - "src/scripts/**"
       - "src/services/**"
+      - "files/**"
 jobs:
   fly-config-validate:
     name: Validate Fly.io config
