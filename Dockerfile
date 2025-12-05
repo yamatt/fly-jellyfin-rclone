@@ -18,6 +18,5 @@ RUN apt-get update --yes && \
     rm -rf /var/cache/apt/archives* /var/lib/apt/lists/*
 
 COPY ./src/scripts /opt/scripts
-COPY ./files/fuse.conf /etc/fuse.conf
 
 ENTRYPOINT ["/opt/horust", "--services-path", "/etc/horust/services"]
