@@ -1,6 +1,5 @@
 name = "unrar"
 command = "/opt/scripts/unrar.sh"
-start-delay = "2s"
 start-after = ["rclone-ftp-auto-mount"]
 
 [restart]
