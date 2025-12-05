@@ -1,5 +1,0 @@
-wget=1.21.3-1+deb12u1
-make=4.3-4.1
-libfuse-dev=2.9.9-6+b1
-g++=4:12.2.0-3
-ca-certificates=20230311+deb12u1
