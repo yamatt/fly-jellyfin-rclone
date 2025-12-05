@@ -4,7 +4,7 @@ FROM rclone/rclone:1.72.0 as rclone
 FROM jellyfin/jellyfin:10.11.4
 
 COPY --from=rclone /usr/local/bin/rclone /opt/rclone
-COPY ./files/rar2fs /opt/rar2fs
+COPY ./files/roar /opt/roar
 
 COPY --from=horust /sbin/horust /opt/horust
 COPY ./src/services /etc/horust/services
