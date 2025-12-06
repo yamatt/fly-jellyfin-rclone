@@ -6,3 +6,6 @@ start-after = ["rclone-ftp-auto-mount"]
 strategy = "never"
 backoff = "0s"
 attempts = 0
+
+[environment]
+additional = { ROAR_LOG_LEVEL = "debug" }
