@@ -1,10 +1,11 @@
 FROM federicoponzi/horust:0.1.10 as horust
 FROM rclone/rclone:1.72.0 as rclone
+FROM ghcr.io/yamatt/roar:v1.0.0 as roar
 
 FROM jellyfin/jellyfin:10.11.5
 
 COPY --from=rclone /usr/local/bin/rclone /opt/rclone
-COPY ./files/roar /opt/roar
+COPY --from=roar /usr/local/bin/roar /opt/roar
 
 COPY --from=horust /sbin/horust /opt/horust
 COPY ./src/services /etc/horust/services
