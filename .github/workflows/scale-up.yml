@@ -1,4 +1,4 @@
-name: Scale Down
+name: Scale Up
 
 on:
     schedule:
