@@ -7,7 +7,7 @@ on:
 
 jobs:
     scale-down:
-        name: Scale down Fly.io app at night
+        name: Scale up Fly.io
         runs-on: ubuntu-latest
         steps:
             - uses: superfly/flyctl-actions/setup-flyctl@master
