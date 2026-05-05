@@ -12,6 +12,11 @@ on:
       - "src/scripts/**"
       - "src/services/**"
       - "files/**"
+  workflow_run:
+    workflows:
+      - Auto-merge
+    types:
+      - completed
 jobs:
   fly-config-validate:
     name: Validate Fly.io config
