@@ -16,7 +16,7 @@ min_machines_running = 0
 processes = ['app']
 
 [http_service.http_options]
-idle_timeout = 1800
+idle_timeout = 300
 
 [env]
 JELLYFIN_DATA_DIR = "/data/data"
