@@ -1,3 +1,5 @@
+
+
 # Fly.io Jellyfin with Rclone
 
 Run Jellyfin on Fly.io with rclone to mount remote file systems such as AWS S3, Backblaze B2 and SFTP
@@ -34,7 +36,7 @@ You may notice the slightly odd syntax `rclone mount :ftp:` this is because of a
 command = """\
 bash -c ' \
 mkdir -p /mnt/ftp && \
-/rclone mount :ftp: /mnt/ftp \
+/opt/rclone mount :ftp: /mnt/ftp \
   --ftp-host=example.com \
   --ftp-user=anonymous \
   --ftp-pass=example-hashed-password \
