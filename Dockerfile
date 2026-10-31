@@ -2,7 +2,7 @@ FROM federicoponzi/horust:0.1.10 as horust
 FROM rclone/rclone:1.75.2 as rclone
 FROM ghcr.io/yamatt/roar:1.0.1 as roar
 
-FROM jellyfin/jellyfin:12.2.20261005-225228
+FROM jellyfin/jellyfin:12.4.20261026-211555
 
 COPY --from=rclone /usr/local/bin/rclone /opt/rclone
 COPY --from=roar /usr/local/bin/roar /opt/roar
