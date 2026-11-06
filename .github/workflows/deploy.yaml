@@ -20,7 +20,7 @@ on:
 jobs:
   fly-config-validate:
     name: Validate Fly.io config
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v7.0.1
       - uses: superfly/flyctl-actions/setup-flyctl@master
@@ -34,12 +34,9 @@ jobs:
     steps:
       - uses: actions/checkout@v7.0.1
       - name: Check Docker files with Hadolint
-        uses: essentialkaos/hadolint-action@v1
+        uses: hadolint/hadolint-action@v3.5.0
         with:
-          files: Dockerfile
-          format: tty
-          strict-labels: true
-          failure-threshold: warning
+          dockerfile: Dockerfile
   deploy:
     name: Deploy app on Fly.io
     runs-on: ubuntu-latest
