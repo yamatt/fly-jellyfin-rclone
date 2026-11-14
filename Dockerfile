@@ -1,5 +1,5 @@
 FROM federicoponzi/horust:0.1.10 as horust
-FROM rclone/rclone:1.75.2 as rclone
+FROM rclone/rclone:1.76.0 as rclone
 FROM ghcr.io/yamatt/roar:1.0.1 as roar
 
 FROM jellyfin/jellyfin:12.4.20261026-211555
